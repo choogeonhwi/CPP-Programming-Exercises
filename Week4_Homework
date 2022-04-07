@@ -1,0 +1,38 @@
+#include "Ranking.h"
+#include <windows.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <string.h>
+#include <time.h>
+#include DIM 4
+
+enum Direction { Left = 75, Right=77,Up=72,Down=80};
+static int DirKey[4] = { Left, Right, Up, Down};
+static int map[DIM][DIM];
+static int x, y;
+static int nMove;
+static clock_t tstart;
+
+static void init(){
+ for(int i=0; i<DIM*DIM-1; i++)
+    map[i/DIM][1%DIM]=i+1;
+    map[DIM-1][DIM-1]=0;
+    x= DIM-1; y=DIM-1;
+    
+    srand(time(NULL));
+    tstart = clock();
+    nMove=0;
+    }
+    static void display(){
+    system("cls");
+    printf("\tFifteen puzzle\n\t");
+    printf("--------------\n\t");
+    for (int r = 0; r<DIM; r++){
+       for (int c = 0; c<DIM; c++){
+         if(map[r][c]>0)
+           printf("%3d",map[r][c]);
+           else printf(" ");
+           }
+           printf("\n\t");
+           }
+           print(
