@@ -18,7 +18,7 @@ static void init(){
     map[i/DIM][1%DIM]=i+1;
     map[DIM-1][DIM-1]=0;
     x= DIM-1; y=DIM-1;
-    
+
     srand(time(NULL));
     tstart = clock();
     nMove=0;
@@ -35,4 +35,68 @@ static void init(){
            }
            printf("\n\t");
            }
-           print(
+           print("---------------\n\t");
+           clock_t t1 = clock();
+           double d = (double)(t1 - tstart) / CLOCKS_PER_SEC;
+           printf("\n\t이동 횟수:%6d\n\t소요 시간:%6.1f\n\n", nMove, d);
+}
+static bool move( int dir) {
+     if(dir==Right && x>0){
+     map[y][x]=map[y][x-1];
+     map[y][--x]=0;
+    }
+     else if(dir==Left && x<DIM-1){
+            map[y][x]=map[y][x+1];
+            map[y][++x]=0;
+    }
+    else if(dir==Up && y<DIM-1){
+           map[y][x]=map[y+1][x];
+           map[++y][x]=0;
+   }
+    else if(dir==Down && y>0){
+           map[y][x]=map[y-1][x];
+           map[--y][x]=0;
+  }
+else return false;
+
+nMove++;
+return true;
+}
+static void shuffle(int nShuffle){
+        for(int i=0; i<nShuffle; i++){
+             int key = DirKey[rand()%4];
+             if(move(key) == false){i--; continue;}
+             display();
+             Sleep(50);
+        }
+}
+static bool isDone(){
+      for(int r = 0; r<DIM; r++){
+          for(int c = 0; c<DIM; c++){
+              if(map[r][c]!=r*DIM+c+1)
+                return(r==DIM-1) && (c==DIM-1);
+    }
+  }
+return true;
+}
+static int getDirKey(){ return getche()=224?getche():0;}
+int playFifteenPuzzle(){
+    init();
+    display();
+    printRanKing();
+    print("\n 퍼즐을 섞어주세요(엔터)...");
+    getche();
+    shuffle(100);
+    printf("\n 게임이 시작됩니다...");
+    getche();
+
+    nMove=0;
+    tstart=clock();
+    while(!isDone()){
+          move(getDirKey());
+          display();
+     }
+     clock_t t1 = clock();
+     double d = (double)(t1-tstart)/CLOCKS_PER_SEC;
+     return addRanKing(nMove, d);
+}
