@@ -28,15 +28,15 @@ const int NORMAL_MODE = 2;
 const int HARD_MODE = 3;
 
 
-//ÃÊ±âÈ­ ¹× Ãâ·ÂÇÔ¼ö 
+//ì´ˆê¸°í™” ë° ì¶œë ¥í•¨ìˆ˜ 
 void Init(int** map, int** check, int size, int bomb);
 void Print(int** map, int** check, int size, int mode);
 void AroundBomb(int** map, int size);
 
-//ÄÜ¼Ö ÇÔ¼ö 
+//ì½˜ì†” í•¨ìˆ˜ 
 void gotoxy(int x, int y);
 void setColor(int color, int bgcolor);
-//ÇÃ·¹ÀÌ ÇÔ¼ö 
+//í”Œë ˆì´ í•¨ìˆ˜ 
 void PLAY(int** map, int** check, int mode);
 
 int main(void)
@@ -54,16 +54,16 @@ int main(void)
         cout << "\t             << M E N U >>  \t" << endl;
         cout << endl;
         setColor(15, 0);
-        cout << "\t       1. ÃÊ±Ş ¸ğµå ( 10 ¡¿ 10 )\t" << endl;
+        cout << "\t       1. ì´ˆê¸‰ ëª¨ë“œ ( 10 Ã— 10 )\t" << endl;
         cout << endl;
-        cout << "\t       2. Áß±Ş ¸ğµå ( 15 ¡¿ 15 )\t" << endl;
+        cout << "\t       2. ì¤‘ê¸‰ ëª¨ë“œ ( 15 Ã— 15 )\t" << endl;
         cout << endl;
-        cout << "\t       3. °í±Ş ¸ğµå ( 20 ¡¿ 20 )\t" << endl;
+        cout << "\t       3. ê³ ê¸‰ ëª¨ë“œ ( 20 Ã— 20 )\t" << endl;
         cout << endl;
-        cout << "\t       4. Á¾·á ÇÏ±â\t" << endl;
+        cout << "\t       4. ì¢…ë£Œ í•˜ê¸°\t" << endl;
         cout << endl;
         setColor(13, 0);
-        cout << "\t       ¸Ş´º¸¦ ÀÔ·ÂÇÏ¼¼¿ä : ";
+        cout << "\t       ë©”ë‰´ë¥¼ ì…ë ¥í•˜ì„¸ìš” : ";
         cin >> menu;
         setColor(15, 0);
         system("cls");
@@ -72,7 +72,7 @@ int main(void)
         switch (menu)
         {
         case 1: {
-            //ÃÊ±Ş¸ğµå
+            //ì´ˆê¸‰ëª¨ë“œ
 
             system("mode con:cols=50 lines=35");
             int** map_easy = new int* [EASY_SIZE];
@@ -85,15 +85,15 @@ int main(void)
             {
                 check_easy[i] = new int[EASY_SIZE];
             }
-            Init(map_easy, check_easy, EASY_SIZE, EASY_BOMB_COUNT); //¸ÊÃÊ±âÈ­ 
+            Init(map_easy, check_easy, EASY_SIZE, EASY_BOMB_COUNT); //ë§µì´ˆê¸°í™” 
             AroundBomb(map_easy, EASY_SIZE);
-            Print(map_easy, check_easy, EASY_SIZE, 1); //¸ÊÃâ·ÂÇÔ¼ö 
+            Print(map_easy, check_easy, EASY_SIZE, 1); //ë§µì¶œë ¥í•¨ìˆ˜ 
             PLAY(map_easy, check_easy, 1);
             system("cls");
             break;
         }
         case 2: {
-            //Áß±Ş¸ğµå
+            //ì¤‘ê¸‰ëª¨ë“œ
             system("mode con:cols=55 lines=40");
             int** map_normal = new int* [NORMAL_SIZE];
             for (int i = 0; i < NORMAL_SIZE; i++)
@@ -105,16 +105,16 @@ int main(void)
             {
                 check_normal[i] = new int[NORMAL_SIZE];
             }
-            Init(map_normal, check_normal, NORMAL_SIZE, NORMAL_BOMB_COUNT); //¸ÊÃÊ±âÈ­ 
+            Init(map_normal, check_normal, NORMAL_SIZE, NORMAL_BOMB_COUNT); //ë§µì´ˆê¸°í™” 
             AroundBomb(map_normal, NORMAL_SIZE);
-            Print(map_normal, check_normal, NORMAL_SIZE, 2); //¸ÊÃâ·ÂÇÔ¼ö 
+            Print(map_normal, check_normal, NORMAL_SIZE, 2); //ë§µì¶œë ¥í•¨ìˆ˜ 
             PLAY(map_normal, check_normal, 2);
             system("cls");
             break;
         }
         case 3: {
-            //°í±Ş¸ğµå 
-            //ÃÊ±Ş¸ğµå
+            //ê³ ê¸‰ëª¨ë“œ 
+            //ì´ˆê¸‰ëª¨ë“œ
             int** map_hard = new int* [HARD_SIZE];
             for (int i = 0; i < HARD_SIZE; i++)
             {
@@ -125,9 +125,9 @@ int main(void)
             {
                 check_hard[i] = new int[HARD_SIZE];
             }
-            Init(map_hard, check_hard, HARD_SIZE, HARD_BOMB_COUNT); //¸ÊÃÊ±âÈ­ 
+            Init(map_hard, check_hard, HARD_SIZE, HARD_BOMB_COUNT); //ë§µì´ˆê¸°í™” 
             AroundBomb(map_hard, HARD_SIZE);
-            Print(map_hard, check_hard, HARD_SIZE, 3); //¸ÊÃâ·ÂÇÔ¼ö 
+            Print(map_hard, check_hard, HARD_SIZE, 3); //ë§µì¶œë ¥í•¨ìˆ˜ 
             PLAY(map_hard, check_hard, 3);
             system("cls");
             break;
@@ -141,7 +141,7 @@ int main(void)
     return 0;
 }
 
-//¸Ê, ÆøÅº ÃÊ±âÈ­ ÇÔ¼ö 
+//ë§µ, í­íƒ„ ì´ˆê¸°í™” í•¨ìˆ˜ 
 void PLAY(int** map, int** check, int mode)
 {
 
@@ -153,85 +153,85 @@ void PLAY(int** map, int** check, int mode)
     int count = 0;
     gotoxy(x, y);
     while (1)
-    {//ÀÌÂ÷¿ø ¹è¿­¿¡¼­ÀÇ »óÇÏÁÂ¿ì ¿òÁ÷ÀÓ°ú Ä¿¼­ÀÇ ¿òÁ÷ÀÓ Â÷ÀÌ¸¦ °í·Á 
+    {//ì´ì°¨ì› ë°°ì—´ì—ì„œì˜ ìƒí•˜ì¢Œìš° ì›€ì§ì„ê³¼ ì»¤ì„œì˜ ì›€ì§ì„ ì°¨ì´ë¥¼ ê³ ë ¤ 
         m_row = (y - 6) + 1;
         m_col = (x - 10) / 2 + 1;
         int ch = _getch();
         if (ch == 112)
             break;
-        if (ch == 13)//»ç¿ëÀÚ°¡ ÁÖº¯ Áö·Ú °³¼ö º¸±â À§ÇØ ¿£ÅÍ Ä¥ °æ¿ì
+        if (ch == 13)//ì‚¬ìš©ìê°€ ì£¼ë³€ ì§€ë¢° ê°œìˆ˜ ë³´ê¸° ìœ„í•´ ì—”í„° ì¹  ê²½ìš°
         {
             if (map[m_row][m_col] == BOMB)
             {
-                cout << "¢À";
+                cout << "â™£";
                 if (mode == EASY_MODE)            gotoxy(10, 18);
                 if (mode == NORMAL_MODE)    gotoxy(10, 25);
                 if (mode == HARD_MODE)        gotoxy(10, 28);
-                cout << "°ÔÀÓ¿¡ ½ÇÆĞÇß½À´Ï´Ù. ¸Ş´º·Î µ¹¾Æ°©´Ï´Ù." << endl;
+                cout << "ê²Œì„ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤. ë©”ë‰´ë¡œ ëŒì•„ê°‘ë‹ˆë‹¤." << endl;
                 Sleep(2000);
                 break;
             }
-            else //ÆøÅºÀÌ ¾Æ´Ò°æ¿ì 
+            else //í­íƒ„ì´ ì•„ë‹ê²½ìš° 
             {
                 int row = (y - 6) + 1;
                 int col = (x - 10) / 2 + 1;
 
-                cout << map[row][col]; // ¸ÊÀÇ ¼ıÀÚ º¸¿©ÁØ´Ù .
+                cout << map[row][col]; // ë§µì˜ ìˆ«ì ë³´ì—¬ì¤€ë‹¤ .
 
                 if (map[row - 1][col - 1] != BOMB && map[row - 1][col - 1] != BORDER && map[row - 1][col - 1] != FLAG)
-                {//ºÏ¼­                    
+                {//ë¶ì„œ                    
                     gotoxy(x - 2, y - 1);
                     cout << map[row - 1][col - 1];
                     gotoxy(x, y);
                 }
                 if (map[row][col - 1] != BOMB && map[row][col - 1] != BORDER && map[row][col - 1] != FLAG)
-                {//¼­
+                {//ì„œ
                     gotoxy(x - 2, y);
                     cout << map[row][col - 1];
                     gotoxy(x, y);
                 }
                 if (map[row + 1][col - 1] != BOMB && map[row + 1][col - 1] != BORDER && map[row + 1][col - 1] != FLAG)
-                {//³²¼­
+                {//ë‚¨ì„œ
                     gotoxy(x - 2, y + 1);
                     cout << map[row + 1][col - 1];
                     gotoxy(x, y);
                 }
                 if (map[row + 1][col] != BOMB && map[row + 1][col] != BORDER && map[row + 1][col] != FLAG)
-                {//³²
+                {//ë‚¨
                     gotoxy(x, y + 1);
                     cout << map[row + 1][col];
                     gotoxy(x, y);
                 }
                 if (map[row - 1][col] != BOMB && map[row - 1][col] != BORDER && map[row - 1][col] != FLAG)
-                {//ºÏ
+                {//ë¶
                     gotoxy(x, y - 1);
                     cout << map[row - 1][col];
                     gotoxy(x, y);
                 }
                 if (map[row - 1][col + 1] != BOMB && map[row - 1][col + 1] != BORDER && map[row - 1][col + 1] != FLAG)
-                {//ºÏµ¿ 
+                {//ë¶ë™ 
                     gotoxy(x + 2, y - 1);
                     cout << map[row - 1][col + 1];
                     gotoxy(x, y);
                 }
                 if (map[row][col + 1] != BOMB && map[row][col + 1] != BORDER && map[row][col + 1] != FLAG)
-                {//µ¿
+                {//ë™
                     gotoxy(x + 2, y);
                     cout << map[row][col + 1];
                     gotoxy(x, y);
                 }
                 if (map[row + 1][col + 1] != BOMB && map[row + 1][col + 1] != BORDER && map[row + 1][col + 1] != FLAG)
-                {//³²µ¿
+                {//ë‚¨ë™
                     gotoxy(x + 2, y + 1);
                     cout << map[row + 1][col + 1];
                     gotoxy(x, y);
                 }
             }
         }
-        if (ch == 32) //»ç¿ëÀÚ°¡ SPACE Å° ´©¸¦ °æ¿ì ±ê¹ß ²È±â 
+        if (ch == 32) //ì‚¬ìš©ìê°€ SPACE í‚¤ ëˆ„ë¥¼ ê²½ìš° ê¹ƒë°œ ê½‚ê¸° 
         {
-            cout << "¢Ï";
-            if (map[m_row][m_col] == BOMB) //ÆøÅºÀÏ°æ¿ì
+            cout << "â˜";
+            if (map[m_row][m_col] == BOMB) //í­íƒ„ì¼ê²½ìš°
             {
                 if (check[m_row][m_col] == 0)
                 {
@@ -240,10 +240,10 @@ void PLAY(int** map, int** check, int mode)
 
                     if (mode == EASY_MODE)
                     {
-                        if (flag == EASY_BOMB_COUNT) //²ÈÀº ±ê¹ßÁß¿¡¼­ ÆøÅºÀ» ¸ğµÎ Ã£¾ÒÀ» °æ¿ì 
+                        if (flag == EASY_BOMB_COUNT) //ê½‚ì€ ê¹ƒë°œì¤‘ì—ì„œ í­íƒ„ì„ ëª¨ë‘ ì°¾ì•˜ì„ ê²½ìš° 
                         {
                             gotoxy(10, 18);
-                            cout << "Áö·Ú¸¦ ¸ğµÎ Ã£¾Ò½À´Ï´Ù!" << endl;
+                            cout << "ì§€ë¢°ë¥¼ ëª¨ë‘ ì°¾ì•˜ìŠµë‹ˆë‹¤!" << endl;
                             Sleep(2000);
                             break;
                         }
@@ -252,7 +252,7 @@ void PLAY(int** map, int** check, int mode)
                         if (flag == NORMAL_BOMB_COUNT)
                         {
                             gotoxy(10, 25);
-                            cout << "Áö·Ú¸¦ ¸ğµÎ Ã£¾Ò½À´Ï´Ù!" << endl;
+                            cout << "ì§€ë¢°ë¥¼ ëª¨ë‘ ì°¾ì•˜ìŠµë‹ˆë‹¤!" << endl;
                             Sleep(2000);
                             break;
                         }
@@ -261,39 +261,39 @@ void PLAY(int** map, int** check, int mode)
                         if (flag == HARD_BOMB_COUNT)
                         {
                             gotoxy(10, 28);
-                            cout << "Áö·Ú¸¦ ¸ğµÎ Ã£¾Ò½À´Ï´Ù!" << endl;
+                            cout << "ì§€ë¢°ë¥¼ ëª¨ë‘ ì°¾ì•˜ìŠµë‹ˆë‹¤!" << endl;
                             Sleep(2000);
                             break;
                         }
                     }
                 }
             }
-            else // ÆøÅºÀÌ ¾Æ´Ò°æ¿ì, ±ê¹ßÀ» ²È´Â´Ù.
+            else // í­íƒ„ì´ ì•„ë‹ê²½ìš°, ê¹ƒë°œì„ ê½‚ëŠ”ë‹¤.
             {
                 map[m_row][m_col] = FLAG;
             }
         }
-        if (ch == 224) // ¹æÇâÅ° Á¶Àı 
+        if (ch == 224) // ë°©í–¥í‚¤ ì¡°ì ˆ 
         {
             ch = _getch();
             switch (ch)
             {
-            case UP: { //À§·ÎÀÌµ¿
+            case UP: { //ìœ„ë¡œì´ë™
                 if (map[m_row - 1][m_col] != BORDER)
                     y -= 1;
                 break;
             }
-            case DOWN: { //¾Æ·¡·Î ÀÌµ¿
+            case DOWN: { //ì•„ë˜ë¡œ ì´ë™
                 if (map[m_row + 1][m_col] != BORDER)
                     y += 1;
                 break;
             }
-            case LEFT: {//¿ŞÂÊÀ¸·Î ÀÌµ¿
+            case LEFT: {//ì™¼ìª½ìœ¼ë¡œ ì´ë™
                 if (map[m_row][m_col - 1] != BORDER)
                     x -= 2;
                 break;
             }
-            case RIGHT: {//¿À¸¥ÂÊÀ¸·Î ÀÌµ¿ 
+            case RIGHT: {//ì˜¤ë¥¸ìª½ìœ¼ë¡œ ì´ë™ 
                 if (map[m_row][m_col + 1] != BORDER)
                     x += 2;
                 break;
@@ -319,14 +319,14 @@ void Print(int** map, int** check, int size, int mode)
         gotoxy(x, y);
         for (int j = 1; j < size; j++)
         {
-            cout << "¡à";
+            cout << "â–¡";
             //if (map[i][j] != BOMB)
             //{
-            //    cout << "¡à";
+            //    cout << "â–¡";
             //}
-            //else // bombÀÌ¸é 
+            //else // bombì´ë©´ 
             //{
-            //    cout << "¡á";
+            //    cout << "â– ";
             //}
 
         }
@@ -342,18 +342,18 @@ void Print(int** map, int** check, int size, int mode)
         temp = 30;
     gotoxy(10, temp - 2);
     setColor(13, 0);
-    cout << "      ¡Ø±âº» ¼³¸í¡Ø         " << endl;
+    cout << "      â€»ê¸°ë³¸ ì„¤ëª…â€»         " << endl;
     setColor(15, 0);
     gotoxy(10, temp);
-    cout << "À§: ¡è\t     ¾Æ·¡: ¡é" << endl;
+    cout << "ìœ„: â†‘\t     ì•„ë˜: â†“" << endl;
     gotoxy(10, temp + 2);
-    cout << "¿ŞÂÊ: ¡ç     ¿À¸¥ÂÊ : ¡æ" << endl;
+    cout << "ì™¼ìª½: â†     ì˜¤ë¥¸ìª½ : â†’" << endl;
     gotoxy(10, temp + 5);
-    cout << "±âº» Ã£±â: ENTER   ±ê¹ß: SPACE" << endl;
+    cout << "ê¸°ë³¸ ì°¾ê¸°: ENTER   ê¹ƒë°œ: SPACE" << endl;
     gotoxy(10, temp + 7);
-    cout << "ÆøÅºÀÏ °æ¿ì:¢À  ±ê¹ßÀÏ °æ¿ì:¢Ï" << endl;
+    cout << "í­íƒ„ì¼ ê²½ìš°:â™£  ê¹ƒë°œì¼ ê²½ìš°:â˜" << endl;
     gotoxy(10, temp + 9);
-    cout << "¸Ş´º·Î µ¹¾Æ°¡±â : PÅ°";
+    cout << "ë©”ë‰´ë¡œ ëŒì•„ê°€ê¸° : Pí‚¤";
 
     gotoxy(0, 0);
 }
@@ -365,7 +365,7 @@ void AroundBomb(int** map, int size)
     {
         for (int j = 1; j < size; j++)
         {
-            if (map[i][j] == NOTBOMB) //ÆøÅºÀÌ ¾Æ´Ñ°÷ÀÏ¶§ ÁÖÀ§ÀÇ ÆøÅº °³¼ö Ä«¿îÆ® 
+            if (map[i][j] == NOTBOMB) //í­íƒ„ì´ ì•„ë‹Œê³³ì¼ë•Œ ì£¼ìœ„ì˜ í­íƒ„ ê°œìˆ˜ ì¹´ìš´íŠ¸ 
             {
                 if (map[i - 1][j - 1] == BOMB)
                     count++;
