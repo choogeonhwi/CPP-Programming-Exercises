@@ -1,0 +1,4 @@
+﻿  pj.cpp
+C:\Users\ch\Desktop\code\Project2\pj.cpp(441,19): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\ch\Desktop\code\Project2\pj.cpp(441,22): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+  Project2.vcxproj -> C:\Users\ch\Desktop\code\Project2\x64\Debug\Project2.exe
